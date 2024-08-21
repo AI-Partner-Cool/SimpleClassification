@@ -1,10 +1,10 @@
 # ResNet18 95.58% Acc with ResNet18 on Cifar10
 
-* 1 hour on single GPU
+* 1 hour on a single GPU
 
-* cos lr scheduer
+* Cosine learning rate scheduer
 
-* tensorboard 
+* Tensorboard 
 
 * [simple data aug](https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/dataloader.py#L13-L18): flip, random crop, normalization
 
@@ -36,6 +36,12 @@ python train.py --model resnet18 --max-lr 5e-2 --save-dir maxLr5e2_resnet18
 * Tensorboard monitoring is [here](maxLr5e2_resnet18/events.out.tfevents.1724169146.localhost.localdomain.78424.0)
 
 
-<p align="left" width="100%">
+<p align="center" width="100%">
     <img width="50%" src="https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/data/tensorboard.png">
 </p>
+
+## ResNet18 v.s. PreactResNet18 
+
+| ResNet18    | PreactResNet18 |
+| -------- | ------- |
+| 95.58  | 95.44   |
