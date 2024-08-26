@@ -55,5 +55,5 @@ python train.py --model resnet18 --max-lr 5e-2 --save-dir maxLr5e2_resnet18
 * 关注我们的公众号：AI上分搭子
 
 <p align="center" width="100%">
-    <img width="50%" src="https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/data/qrcode_wechat.bmp">
+    <img width="25%" src="https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/data/qrcode_wechat.bmp">
 </p>
