@@ -1,5 +1,6 @@
 # ResNet18 95.58% Acc with ResNet18 on Cifar10
 
+
 * 1 hour on a single GPU
 
 * Cosine learning rate scheduer
@@ -45,3 +46,14 @@ python train.py --model resnet18 --max-lr 5e-2 --save-dir maxLr5e2_resnet18
 | ResNet18    | PreactResNet18 |
 | -------- | ------- |
 | 95.58  | 95.44   |
+
+## 关注我们
+
+
+* [公众号文章：极简图像分类，95.58% on CIFAR10 with ResNet18](https://mp.weixin.qq.com/s/d557nluTn_PLfpsmYiodCQ)
+
+* 关注我们的公众号：AI上分搭子
+
+<p align="center" width="100%">
+    <img width="50%" src="https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/data/qrcode_wechat.bmp">
+</p>
