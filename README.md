@@ -28,28 +28,11 @@ The model can be trained on a single GPU with more than 12 GB of memory.
 
 ## Data 
 
-### CUB
+One can directly go to `./data/`, launch `download.sh` to download CUB and CARS dataset: 
 
-Downloading CUB from [cyizhuo's repo](https://github.com/cyizhuo/CUB-200-2011-dataset)
+* Downloading CUB from [cyizhuo's repo](https://github.com/cyizhuo/CUB-200-2011-dataset)
 
-```bash
-git clone git@github.com:cyizhuo/CUB-200-2011-dataset.git
-mv CUB-200-2011-dataset CUB_200_2011 
-find CUB_200_2011/train/ -type f | grep -E "\.(jpg|jpeg|png|gif|bmp|tiff|webp)$" | wc -l # which should have 5994 training images, according to https://www.tensorflow.org/datasets/catalog/caltech_birds2011
-find CUB_200_2011/test/ -type f | grep -E "\.(jpg|jpeg|png|gif|bmp|tiff|webp)$" | wc -l # which should have 5794 images, according to https://www.tensorflow.org/datasets/catalog/caltech_birds2011
-```
-
-### CARS
-
-
-Downloading CARS from [cyizhuo's repo](https://github.com/cyizhuo/Stanford-Cars-dataset)
-
-```bash
-git clone git@github.com:cyizhuo/Stanford-Cars-dataset.git
-mv Stanford-Cars-dataset Stanford_CARS 
-find Stanford_CARS/train/ -type f | grep -E "\.(jpg|jpeg|png|gif|bmp|tiff|webp)$" | wc -l # which should have 8144 training images, according to https://www.kaggle.com/datasets/jessicali9530/stanford-cars-dataset
-find Stanford_CARS/test/ -type f | grep -E "\.(jpg|jpeg|png|gif|bmp|tiff|webp)$" | wc -l # which should have 8041 images, according to https://www.kaggle.com/datasets/jessicali9530/stanford-cars-dataset
-```
+* Downloading CARS from [cyizhuo's repo](https://github.com/cyizhuo/Stanford-Cars-dataset)
 
 ## Baseline Results on CUB, CARS, CIFAR10 and CIFAR100
 
@@ -64,6 +47,12 @@ find Stanford_CARS/test/ -type f | grep -E "\.(jpg|jpeg|png|gif|bmp|tiff|webp)$"
 | 0.05 | TRUE | ResNet50  | **63.43** | **89.27** | -       | -        |
 
 * EMA improves in most cases
+
+Reproducing the above exp with: 
+
+```bash
+  bash baseline.sh
+  ```
 
 ## Pretraining matters
 
@@ -83,6 +72,15 @@ find Stanford_CARS/test/ -type f | grep -E "\.(jpg|jpeg|png|gif|bmp|tiff|webp)$"
 * Pretraining significantly improves the accuracy
 
 * MocoV2 (SSL pretrained) might be promising for some small datasets, e.g. CARS.
+
+Reproducing the above exp with: 
+
+```bash
+  cd pretrained_weight/
+  bash download.sh
+  cd ..
+  bash pretraining.sh
+  ```
 
 ## [Fixing the train-test resolution discrepancy](https://arxiv.org/abs/1906.06423)
 
@@ -139,10 +137,10 @@ find Stanford_CARS/test/ -type f | grep -E "\.(jpg|jpeg|png|gif|bmp|tiff|webp)$"
     <tr>
       <td>0.005</td>
       <td>400</td>
-      <td>224</td>
+      <td>**224 * 224**</td>
       <td>0.001</td>
       <td>100</td>
-      <td>448</td>
+      <td>**448 * 448**</td>
       <td>82.59</td>
       <td>87.46</td>
       <td><strong>86.07</strong></td>
@@ -156,6 +154,15 @@ find Stanford_CARS/test/ -type f | grep -E "\.(jpg|jpeg|png|gif|bmp|tiff|webp)$"
 * Training on a small resolution then finetuning on larger resolution manage to achieve consistent gain
 
 * Check [paperswithcode](https://paperswithcode.com/sota/fine-grained-image-classification-on-cub-200), these results **86.07** on CUB and **92.18** on CARS are not bad.
+
+Reproducing the above exp with: 
+
+```bash
+  cd pretrained_weight/
+  bash download.sh
+  cd ..
+  bash fix_resolution.sh
+  ```
 
 ## 关注我们
 
