@@ -5,7 +5,7 @@
 
 * Support CIFAR10, CIFAR100, CUB and CARS
 
-* Support standard retrained weight on Inet1K in supervised and self-supervised fashion (MOCOV2) 
+* Support standard retrained weight on Inet1K in supervised and self-supervised fashion ([MOCOV2](https://arxiv.org/abs/2003.04297)) 
 
 * [Fixing the train-test resolution discrepancy](https://arxiv.org/abs/1906.06423)
 
@@ -27,6 +27,13 @@ The model can be trained on a single GPU with more than 12 GB of memory.
   ```
 
 ## Data 
+
+| Dataset  | Nb CLS | No. Training | No. Test |
+|----------|--------|--------------|----------|
+| CIFAR10  | 10     | 50,000       | 10,000   |
+| CIFAR100 | 100    | 50,000       | 10,000   |
+| CUB      | 200    | 5,994        | 5,794    |
+| CARS     | 196    | 8,144        | 8,041    |
 
 One can directly go to `./data/`, launch `download.sh` to download CUB and CARS dataset: 
 
@@ -83,6 +90,8 @@ Reproducing the above exp with:
   ```
 
 ## [Fixing the train-test resolution discrepancy](https://arxiv.org/abs/1906.06423)
+
+* One can refer to [[经典论文] Meta的FixRes (NeurIPS 2019)](https://mp.weixin.qq.com/s?__biz=MzkwODczNTIyNw==&mid=2247483869&idx=1&sn=e35be8947ca05650fc25a409bd3a50b2&chksm=c0c42649f7b3af5f6283ec3905548901451128294bd9361cd0181a62c4a8c4bc154bef50264e#rd)
 
 * CUB, CARS are trained with Inet1K Pretrained weight
 
@@ -164,10 +173,19 @@ Reproducing the above exp with:
   bash fix_resolution.sh
   ```
 
-## 关注我们
+## 关注我们，其他感兴趣的内容
 
 
 * [公众号文章：极简图像分类，95.58% on CIFAR10 with ResNet18](https://mp.weixin.qq.com/s/d557nluTn_PLfpsmYiodCQ)
+
+* [[经典论文] Meta的FixRes (NeurIPS 2019)](https://mp.weixin.qq.com/s?__biz=MzkwODczNTIyNw==&mid=2247483869&idx=1&sn=e35be8947ca05650fc25a409bd3a50b2&chksm=c0c42649f7b3af5f6283ec3905548901451128294bd9361cd0181a62c4a8c4bc154bef50264e#rd)
+
+* [[经典论文] 让卷积再次具有平移不变性 (2019 ICML)](https://mp.weixin.qq.com/s?__biz=MzkwODczNTIyNw==&mid=2247483808&idx=1&sn=6b823ed172d5617f6ad48a6700d2aa65&chksm=c0c42634f7b3af22f4ea57a94b670993817c9808300e234bb5db4785693558e50f712df55343#rd)
+
+* [[Pytorch实战] model.eval()究竟干了啥](https://mp.weixin.qq.com/s?__biz=MzkwODczNTIyNw==&mid=2247483827&idx=1&sn=0f86c601ea7c5268789f0c466a3bf7ed&chksm=c0c42627f7b3af3173d8743a2d859b15b458b87dd58592c94e89937c37e41edd8bea5de796b0#rd)
+
+* [[Pytorch实战] 什么是In-place操作](https://mp.weixin.qq.com/s?__biz=MzkwODczNTIyNw==&mid=2247483835&idx=1&sn=15c4fd19a6e457b55abe77868cb52393&chksm=c0c4262ff7b3af3990f5e5aade4ad3c47be1004d99628074c6376756c00076178b296b2b1add#rd)
+
 
 * 关注我们的公众号：AI上分搭子
 
