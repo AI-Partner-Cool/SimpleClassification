@@ -93,8 +93,8 @@ Reproducing the above exp with:
     <tr>
       <th colspan="3">Stage 1</th>
       <th colspan="3">Stage 2</th>
-      <th colspan="2">Test Size = 224</th>
-      <th colspan="2">Test Size = 448</th>
+      <th colspan="2">Test Size = 224 * 224</th>
+      <th colspan="2">Test Size = 448 * 448</th>
     </tr>
     <tr>
       <th>LR</th>
@@ -113,7 +113,7 @@ Reproducing the above exp with:
     <tr>
       <td>0.005</td>
       <td>500</td>
-      <td>224</td>
+      <td><strong>224 * 224</strong></td>
       <td>-</td>
       <td>-</td>
       <td>-</td>
@@ -137,10 +137,10 @@ Reproducing the above exp with:
     <tr>
       <td>0.005</td>
       <td>400</td>
-      <td>**224 * 224**</td>
+      <td><strong>224 * 224</strong></td>
       <td>0.001</td>
       <td>100</td>
-      <td>**448 * 448**</td>
+      <td><strong>448</strong></td>
       <td>82.59</td>
       <td>87.46</td>
       <td><strong>86.07</strong></td>
