@@ -125,7 +125,7 @@ Reproducing the above exp with:
     <tr>
       <td>0.005</td>
       <td>500</td>
-      <td>448</td>
+      <td><strong>448 * 448</strong></td>
       <td>-</td>
       <td>-</td>
       <td>-</td>
@@ -140,7 +140,7 @@ Reproducing the above exp with:
       <td><strong>224 * 224</strong></td>
       <td>0.001</td>
       <td>100</td>
-      <td><strong>448</strong></td>
+      <td><strong>448 * 448</strong></td>
       <td>82.59</td>
       <td>87.46</td>
       <td><strong>86.07</strong></td>
