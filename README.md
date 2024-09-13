@@ -99,10 +99,10 @@ Reproducing the above exp with:
     <tr>
       <th>LR</th>
       <th>Epoch</th>
-      <th>Size</th>
+      <th>Train Size</th>
       <th>LR</th>
       <th>Epoch</th>
-      <th>Size</th>
+      <th>Train Size</th>
       <th>CUB</th>
       <th>CARS</th>
       <th>CUB</th>
