@@ -1,4 +1,4 @@
-# A simple tutorial to Image Classification
+# Image Classification Tutorial
 
 
 * 95.62% top-1 acc on CIFAR10, 79.11% top-1 acc on CIFAR10 and CIFAR100 with resnet18 
