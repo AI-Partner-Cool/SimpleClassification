@@ -11,7 +11,7 @@
 8. [References](#8-references)
 
 ## 1. Updates :newspaper:
-- [2025.02] Support Reliability Metric: AURC (:+1: AURC = :+1: classification accuracy + :+1: calibration)
+- [2025.02] Support Reliability Metric: AURC ( :+1: AURC =  :+1:  classification accuracy +  :+1:  reliability)
 - [2025.02] Add Deit-B and ConvNext-B Results
 - [2024.02] Add FixRes training strategy
 - [2024.01] Initial release with ResNet support
