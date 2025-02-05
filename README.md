@@ -26,9 +26,8 @@
 * Tensorboard Visualization, EMA, [ONLY simple data aug](https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/dataloader.py#L13-L18)
 
 <p align="center">
-<img src="https://github.com/AI-Partner-Cool/SimpleClassification/tree/main/data/cub_tensorboard.png" width="400px" alt="tensorboard">
+<img src="https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/data/cub_tensorboard.png" alt="tb" width="800">
 </p>
-
 ## 3. Dependencies :books:
 The model can be trained on a single GPU with more than 12 GB of memory.
 
