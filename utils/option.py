@@ -15,7 +15,7 @@ def get_args_parser():
     parser.add_argument('--gpu', default='0', type=str, help='GPU id to use')
 
     ## model 
-    parser.add_argument('--model', default='resnet18', type=str, choices=['resnet18_cifar', 'resnet18', 'resnet50'], help='which model?')
+    parser.add_argument('--model', default='resnet18', type=str, choices=['resnet18_cifar', 'resnet18', 'resnet50', 'deit_base_patch16_384', 'convnext_base'], help='which model?')
     parser.add_argument('--pretrained-net', default=None, type=str, help='if use pretrained model, set pretrained model path')
     
     
@@ -28,6 +28,7 @@ def get_args_parser():
     parser.add_argument('--weight-decay', default=5e-4, type=float, help='Weight decay')
     parser.add_argument('--momentum', default=0.9, type=float, help='Momentum')
 
+    
     parser.add_argument("--train-size", type=int, default=224, help="image train resolution")
     parser.add_argument("--test-size", type=int, default=224, help="image test resolution")
     

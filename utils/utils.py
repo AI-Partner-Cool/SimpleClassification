@@ -59,16 +59,18 @@ def accuracy(output, target, topk=(1,)):
     return res[0], correct.squeeze()
 
 def load_pretrained_net(net, pretrained_net, logger):
-    
+
     logger.info('Loading pretrained weight from {}...'.format(pretrained_net))
     current_net_dict, pretrained_net_dict = net.state_dict(), torch.load(pretrained_net)
-
+    pretrained_net_dict = pretrained_net_dict if 'model' not in pretrained_net_dict else pretrained_net_dict['model']
+        
     ## Fix WEIGHT shape mismatch
     new_state_dict = {}
     for key in current_net_dict.keys() : 
         
         if key in pretrained_net_dict and current_net_dict[key].size() == pretrained_net_dict[key].size() : 
             new_state_dict[key] = pretrained_net_dict[key]
+            
         else : 
             logger.info('{} missing in the pretrained weight...'.format(key))
             new_state_dict[key] = current_net_dict[key]

@@ -1,19 +1,35 @@
 # Image Classification Tutorial
 
+## Table of Contents
+1. [Updates](#1-updates)
+2. [Features](#2-features)
+3. [Dependencies](#3-dependencies)
+4. [Data](#4-data)
+5. [Baseline Results](#5-baseline-results)
+6. [Pretraining Results](#6-pretraining-results)
+7. [FixRes Results](#7-fixres-results)
+8. [References](#8-references)
 
-* 95.62% top-1 acc on CIFAR10, 79.11% top-1 acc on CIFAR10 and CIFAR100 with resnet18 
+## 1. Updates
+- [2025.02] Support Reliability Metric: AURC (good AURC = good classification accuracy + good calibration)
+- [2025.02] Add Deit-B and ConvNext-B Results
+- [2024.02] Add FixRes training strategy
+- [2024.01] Initial release with ResNet support
 
+## 2. Features
+* Supporting **ConvNext**, **Deit**; **For ConvNext, CIFAR10: 98.8%; CIFAR100: 92.4%; CUB: 91.22% ; CARS 93.32%**
+* Supporting Reliability Metric: AURC
+* **95.62% top-1 acc on CIFAR10, 79.11% top-1 acc on CIFAR100 with resnet18** 
 * Support CIFAR10, CIFAR100, CUB and CARS
-
 * Support standard retrained weight on Inet1K in supervised and self-supervised fashion ([MOCOV2](https://arxiv.org/abs/2003.04297)) 
-
 * [Fixing the train-test resolution discrepancy](https://arxiv.org/abs/1906.06423)
+* Tensorboard Visualization, EMA, [ONLY simple data aug](https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/dataloader.py#L13-L18)
 
-* Tensorboard Visualization, EMA, [ONLY simple data aug](https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/dataloader.py#L13-L18): flip, random crop, normalization
+<p align="center">
+<img src="https://github.com/AI-Partner-Cool/SimpleClassification/tree/main/data/cub_tensorboard.png" width="400px" alt="tensorboard">
+</p>
 
-
-## Dependencies
-
+## 3. Dependencies
 The model can be trained on a single GPU with more than 12 GB of memory.
 
 - Install PyTorch adapted to your CUDA version via Conda:
@@ -26,8 +42,7 @@ The model can be trained on a single GPU with more than 12 GB of memory.
   conda install matplotlib tensorboard
   ```
 
-## Data 
-
+## 4. Data 
 | Dataset  | Nb CLS | No. Training | No. Test |
 |----------|--------|--------------|----------|
 | CIFAR10  | 10     | 50,000       | 10,000   |
@@ -35,14 +50,9 @@ The model can be trained on a single GPU with more than 12 GB of memory.
 | CUB      | 200    | 5,994        | 5,794    |
 | CARS     | 196    | 8,144        | 8,041    |
 
-One can directly go to `./data/`, launch `download.sh` to download CUB and CARS dataset: 
+One can directly go to `./data/`, launch `download.sh` to download CUB and CARS dataset.
 
-* Downloading CUB from [cyizhuo's repo](https://github.com/cyizhuo/CUB-200-2011-dataset)
-
-* Downloading CARS from [cyizhuo's repo](https://github.com/cyizhuo/Stanford-Cars-dataset)
-
-## Baseline Results on CUB, CARS, CIFAR10 and CIFAR100
-
+## 5. Baseline Results
 * CUB, CARS are trained and tested with **224 * 224**
 * CIFAR10, CIFAR100 are trained and tested with **32 * 32**
 
@@ -53,44 +63,64 @@ One can directly go to `./data/`, launch `download.sh` to download CUB and CARS 
 | 0.05 | -    | ResNet50  | 57.16 | 88.87 | -       | -        |
 | 0.05 | TRUE | ResNet50  | **63.43** | **89.27** | -       | -        |
 
-* EMA improves in most cases
-
-Reproducing the above exp with: 
-
+**EMA improves in most cases**
+Reproducing the above exp with:
 ```bash
-  bash baseline.sh
-  ```
+bash baseline.sh
+```
 
-## Pretraining matters
+## 6. Pretraining Results
 
 * CUB, CARS are trained and tested with **224 * 224**
-
 * Report result with EMA
  
 | LR    | Pretrained | Arch      | CUB   | CARS  |
 |-------|------------|-----------|-------|-------|
 | 0.05  | -          | ResNet18  | 64.64 | 87.54 |
-| 0.005 | Inet1K       | ResNet18  | **77.11** | **88.42** |
-|-------|------------|-----------|-------|-------|
+| 0.005 | Inet1K     | ResNet18  | **77.11** | **88.42** |
 | 0.05  | -          | ResNet50  | 63.43 | 89.27 |
-| 0.005 | Inet1K       | ResNet50  | **84.47** | 91.38 |
+| 0.005 | Inet1K     | ResNet50  | **84.47** | 91.38 |
 | 0.005 | MocoV2     | ResNet50  | 79.01 | **92.33** |
 
-* Pretraining significantly improves the accuracy
+**Accuracy with DEIT-B and ConvNext-B Models (Resolution 384 * 384)**
 
-* MocoV2 (SSL pretrained) might be promising for some small datasets, e.g. CARS.
+| LR    | Pretrained | EMA | Arch      | CUB   | CARS  | CIFAR10 | CIFAR100 |
+|-------|------------|-----|-----------|-------|-------|---------|----------|
+| 0.002  | Inet1K     | -   | DEIT-B-384  | 87.05 | 92.44 | 98.33 | 88.24 |
+| 0.002  | Inet1K     | True   | DEIT-B-384  | 87.42 | 92.87 |  98.83| 90.47 |
+| 0.002  | Inet21K     | -   | DEIT-B-384  | 88.87 | 91.56 | 98.61 | 89.73 |
+| 0.002  | Inet21K     | True   | DEIT-B-384  | 89.61 | 92.17 | **98.99** | 92.31 |
+| 0.002  | Inet21K + 1K     | -   | ConvNext-B  | 91.09 | **93.35** | 98.73 | 92.04 |
+| 0.002  | Inet21K + 1K     | True   | ConvNext-B  | 91.22 | 93.32 | 98.87 | **92.40** |
+| 0.002  | Inet21K     | -   | ConvNext-B  | 91.49 | 93.14 | 98.73 | 91.76 |
+| 0.002  | Inet21K     | True   | ConvNext-B  | **91.58** | 93.17 | 98.84 | 92.14 |
 
-Reproducing the above exp with: 
 
-```bash
-  cd pretrained_weight/
+
+**AURC with DEIT-B and ConvNext-B Models (Resolution 384 * 384)**
+
+| LR    | Pretrained | EMA | Arch      | CUB   | CARS  | CIFAR10 | CIFAR100 |
+|-------|------------|-----|-----------|-------|-------|---------|----------|
+| 0.002  | Inet1K     | -   | DEIT-B-384  | 28.67 | 16.20 | 0.78 | 19.28 |
+| 0.002  | Inet1K     | True   | DEIT-B-384  | 27.05 | 14.44 | 0.45 | 13.59 |
+| 0.002  | Inet21K     | -   | DEIT-B-384  | 23.76 | 18.12 | 0.63 | 15.77 |
+| 0.002  | Inet21K     | True   | DEIT-B-384  | 23.02 | 15.14 | 0.50 | 9.72 |
+| 0.002  | Inet21K + 1K     | -   | ConvNext-B  | 19.28 | 12.92 | 0.42 | 10.26 |
+| 0.002  | Inet21K + 1K     | True   | ConvNext-B  | **18.79** | 12.75 | **0.39** | **9.14** |
+| 0.002  | Inet21K     | -   | ConvNext-B  | 19.78 | 12.61 | 0.59 | 11.08 |
+| 0.002  | Inet21K     | True   | ConvNext-B  | 19.41 | **12.30** | 0.48 | 9.78 |
+
+
+**Pretraining matters**
+Reproducing the above exp with:
+```bash 
+cd pretrained_weight/
   bash download.sh
   cd ..
   bash pretraining.sh
-  ```
+```
 
-## [Fixing the train-test resolution discrepancy](https://arxiv.org/abs/1906.06423)
-
+## 7. FixRes Results
 * One can refer to [[经典论文] Meta的FixRes (NeurIPS 2019)](https://mp.weixin.qq.com/s?__biz=MzkwODczNTIyNw==&mid=2247483869&idx=1&sn=e35be8947ca05650fc25a409bd3a50b2&chksm=c0c42649f7b3af5f6283ec3905548901451128294bd9361cd0181a62c4a8c4bc154bef50264e#rd)
 
 * CUB, CARS are trained with Inet1K Pretrained weight
@@ -172,6 +202,16 @@ Reproducing the above exp with:
   cd ..
   bash fix_resolution.sh
   ```
+
+## 8. References
+* [Fixing the train-test resolution discrepancy](https://arxiv.org/abs/1906.06423)
+* [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+* [MOCOV2: Momentum Contrast for Unsupervised Visual Representation Learning](https://arxiv.org/abs/2003.04297)
+* [DeiT III: Revenge of the ViT](https://arxiv.org/pdf/2204.07118)
+* [Training data-efficient image transformers &amp; distillation through attention](https://arxiv.org/abs/2012.12877)
+* [ConvNeXt: A ConvNet for the 2020s](https://arxiv.org/abs/2201.03545)
+
+
 
 ## 关注我们，其他感兴趣的内容
 
