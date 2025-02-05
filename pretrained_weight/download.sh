@@ -15,3 +15,30 @@ mv resnet50-11ad3fa6.pth resnet50_inet_torch_sota.pth
 wget https://dl.fbaipublicfiles.com/moco/moco_checkpoints/moco_v2_800ep/moco_v2_800ep_pretrain.pth.tar
 mv moco_v2_800ep_pretrain.pth.tar resnet50_inet_moco_v2_800ep.pth 
 
+# https://github.com/facebookresearch/deit/blob/main/README_revenge.md
+# Deit-B 384 * 384 on Inet-1K, achieving 85.0 Top-1 Acc. 
+# from "DeiT III: Revenge of the ViT", Hugo Touvron, Matthieu Cord and Herve Jegou, 2022 
+wget https://dl.fbaipublicfiles.com/deit/deit_3_base_384_1k.pth
+
+
+# https://github.com/facebookresearch/deit/blob/main/README_revenge.md
+# Deit-B 384 * 384 on Inet-21K, achieving 86.7 Top-1 Acc. 
+# from "DeiT III: Revenge of the ViT", Hugo Touvron, Matthieu Cord and Herve Jegou, 2022 
+wget https://dl.fbaipublicfiles.com/deit/deit_3_base_384_21k.pth
+
+# ConvNeXt-Base models with different configurations
+# https://github.com/facebookresearch/ConvNeXt
+
+
+# ConvNeXt-Base trained on ImageNet-1K (384x384)
+wget https://dl.fbaipublicfiles.com/convnext/convnext_base_1k_384.pth
+
+# ConvNeXt-Base trained on ImageNet-22K, fine-tuned on 1K (384x384)
+wget https://dl.fbaipublicfiles.com/convnext/convnext_base_22k_1k_384.pth
+
+# ConvNeXt-Base trained on ImageNet-22K (224x224)
+wget https://dl.fbaipublicfiles.com/convnext/convnext_base_22k_224.pth
+
+
+
+
