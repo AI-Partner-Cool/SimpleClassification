@@ -28,6 +28,7 @@
 <p align="center">
 <img src="https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/data/cub_tensorboard.png" alt="tb" width="800">
 </p>
+
 ## 3. Dependencies :books:
 The model can be trained on a single GPU with more than 12 GB of memory.
 
