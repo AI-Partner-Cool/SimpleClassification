@@ -10,15 +10,15 @@
 7. [FixRes Results](#7-fixres-results)
 8. [References](#8-references)
 
-## 1. Updates
-- [2025.02] Support Reliability Metric: AURC (good AURC = good classification accuracy + good calibration)
+## 1. Updates :newspaper:
+- [2025.02] Support Reliability Metric: AURC (:+1: AURC = :+1: classification accuracy + :+1: calibration)
 - [2025.02] Add Deit-B and ConvNext-B Results
 - [2024.02] Add FixRes training strategy
 - [2024.01] Initial release with ResNet support
 
-## 2. Features
-* Supporting **ConvNext**, **Deit**; **For ConvNext, CIFAR10: 98.8%; CIFAR100: 92.4%; CUB: 91.22% ; CARS 93.32%**
-* Supporting Reliability Metric: AURC
+## 2. Features :traffic_light:	
+* Supporting **ConvNext**, **Deit**; :fire: **For ConvNext, CIFAR10: 98.8%; CIFAR100: 92.4%; CUB: 91.22% ; CARS 93.32%** :fire:
+* Supporting Reliability Metric: AURC, see [here](https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/test.py#L21-L47) for details
 * **95.62% top-1 acc on CIFAR10, 79.11% top-1 acc on CIFAR100 with resnet18** 
 * Support CIFAR10, CIFAR100, CUB and CARS
 * Support standard retrained weight on Inet1K in supervised and self-supervised fashion ([MOCOV2](https://arxiv.org/abs/2003.04297)) 
@@ -29,7 +29,7 @@
 <img src="https://github.com/AI-Partner-Cool/SimpleClassification/tree/main/data/cub_tensorboard.png" width="400px" alt="tensorboard">
 </p>
 
-## 3. Dependencies
+## 3. Dependencies :books:
 The model can be trained on a single GPU with more than 12 GB of memory.
 
 - Install PyTorch adapted to your CUDA version via Conda:
@@ -42,7 +42,7 @@ The model can be trained on a single GPU with more than 12 GB of memory.
   conda install matplotlib tensorboard
   ```
 
-## 4. Data 
+## 4. Data :1234:
 | Dataset  | Nb CLS | No. Training | No. Test |
 |----------|--------|--------------|----------|
 | CIFAR10  | 10     | 50,000       | 10,000   |
@@ -52,7 +52,7 @@ The model can be trained on a single GPU with more than 12 GB of memory.
 
 One can directly go to `./data/`, launch `download.sh` to download CUB and CARS dataset.
 
-## 5. Baseline Results
+## 5. Baseline Results :memo:
 * CUB, CARS are trained and tested with **224 * 224**
 * CIFAR10, CIFAR100 are trained and tested with **32 * 32**
 
@@ -69,7 +69,7 @@ Reproducing the above exp with:
 bash baseline.sh
 ```
 
-## 6. Pretraining Results
+## 6. Pretraining Results :bookmark_tabs:
 
 * CUB, CARS are trained and tested with **224 * 224**
 * Report result with EMA
@@ -120,7 +120,7 @@ cd pretrained_weight/
   bash pretraining.sh
 ```
 
-## 7. FixRes Results
+## 7. FixRes Results :chart_with_upwards_trend:
 * One can refer to [[经典论文] Meta的FixRes (NeurIPS 2019)](https://mp.weixin.qq.com/s?__biz=MzkwODczNTIyNw==&mid=2247483869&idx=1&sn=e35be8947ca05650fc25a409bd3a50b2&chksm=c0c42649f7b3af5f6283ec3905548901451128294bd9361cd0181a62c4a8c4bc154bef50264e#rd)
 
 * CUB, CARS are trained with Inet1K Pretrained weight
@@ -203,7 +203,7 @@ Reproducing the above exp with:
   bash fix_resolution.sh
   ```
 
-## 8. References
+## 8. References :scroll:
 * [Fixing the train-test resolution discrepancy](https://arxiv.org/abs/1906.06423)
 * [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
 * [MOCOV2: Momentum Contrast for Unsupervised Visual Representation Learning](https://arxiv.org/abs/2003.04297)
