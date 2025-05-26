@@ -11,7 +11,7 @@
 8. [References](#8-references)
 
 ## 1. Updates :newspaper:
-- [2025.02] Support Reliability Metric: AURC (:+1: AURC = :+1: classification accuracy + :+1: calibration)
+- [2025.02] Support Reliability Metric: AURC ( :+1: AURC =  :+1:  classification accuracy +  :+1:  reliability)
 - [2025.02] Add Deit-B and ConvNext-B Results
 - [2024.02] Add FixRes training strategy
 - [2024.01] Initial release with ResNet support
@@ -26,7 +26,7 @@
 * Tensorboard Visualization, EMA, [ONLY simple data aug](https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/dataloader.py#L13-L18)
 
 <p align="center">
-<img src="https://github.com/AI-Partner-Cool/SimpleClassification/tree/main/data/cub_tensorboard.png" width="400px" alt="tensorboard">
+<img src="https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/data/cub_tensorboard.png" alt="tb" width="800">
 </p>
 
 ## 3. Dependencies :books:
