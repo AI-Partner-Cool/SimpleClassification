@@ -23,6 +23,7 @@ import model.resnet_cifar
 import model.resnet
 import model.deit
 import model.convnext
+import model.dinov2
 
 
 
@@ -88,12 +89,30 @@ elif args.model == 'convnext_base' :
     net = model.convnext.convnext_base(args.nb_cls)
     if args.pretrained_net is not None : 
         net = utils.utils.load_pretrained_net(net, args.pretrained_net, logger)
+elif args.model == 'dinov2_base_patch14' :
+    net = model.dinov2.dinov2_base_patch14(args.nb_cls)
+    
 
 net.cuda()
 net_ema = utils.ema.ModelEMA(net)
 
 ## define optimizer
-optimizer = torch.optim.SGD(net.parameters(), lr=args.min_lr, momentum=0.9, weight_decay=args.weight_decay)
+if args.optimizer == 'sgd':
+    optimizer = torch.optim.SGD(
+        net.parameters(),
+        lr=args.min_lr,
+        momentum=0.9,
+        weight_decay=args.weight_decay
+    )
+elif args.optimizer == 'adamw':
+    optimizer = torch.optim.AdamW(
+        net.parameters(),
+        lr=args.min_lr,
+        betas=(0.9, 0.999),
+        weight_decay=args.weight_decay
+    )
+else:
+    raise ValueError(f"Unsupported optimizer: {args.optimizer}")
 
 ## define Warmup cos lr scheduler
 lr_scheduler = utils.lr_scheduler.Warmup_cos_lr(args.max_lr, args.min_lr, iter_per_epoch, args.nb_epoch, args.warmup_epoch)
