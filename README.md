@@ -11,13 +11,15 @@
 8. [References](#8-references)
 
 ## 1. Updates :newspaper:
+- [2025.06] Support DINOv2
 - [2025.02] Support Reliability Metric: AURC ( :+1: AURC =  :+1:  classification accuracy +  :+1:  reliability)
 - [2025.02] Add Deit-B and ConvNext-B Results
 - [2024.02] Add FixRes training strategy
 - [2024.01] Initial release with ResNet support
 
 ## 2. Features :traffic_light:	
-* Supporting **ConvNext**, **Deit**; :fire: **For ConvNext, CIFAR10: 98.8%; CIFAR100: 92.4%; CUB: 91.22% ; CARS 93.32%** :fire:
+* Supporting **DINOv2**, :fire: **For DINOv2-base with register, CIFAR10: 99.3%; CIFAR100: 93.8%; CUB: 90.8% ; CARS 95.1%** :fire:
+* Supporting **ConvNext**, **Deit**; :fire: **For ConvNext, CIFAR10: 98.8%; CIFAR100: 92.4%; CUB: 91.2% ; CARS 93.3%** :fire:
 * Supporting Reliability Metric: AURC, see [here](https://github.com/AI-Partner-Cool/SimpleClassification/blob/main/test.py#L21-L47) for details
 * **95.62% top-1 acc on CIFAR10, 79.11% top-1 acc on CIFAR100 with resnet18** 
 * Support CIFAR10, CIFAR100, CUB and CARS
@@ -96,7 +98,6 @@ bash baseline.sh
 | 0.002  | Inet21K     | True   | ConvNext-B  | **91.58** | 93.17 | 98.84 | 92.14 |
 
 
-
 **AURC with DEIT-B and ConvNext-B Models (Resolution 384 * 384)**
 
 | LR    | Pretrained | EMA | Arch      | CUB   | CARS  | CIFAR10 | CIFAR100 |
@@ -110,14 +111,27 @@ bash baseline.sh
 | 0.002  | Inet21K     | -   | ConvNext-B  | 19.78 | 12.61 | 0.59 | 11.08 |
 | 0.002  | Inet21K     | True   | ConvNext-B  | 19.41 | **12.30** | 0.48 | 9.78 |
 
+**Accuracy with DINOv2 Models (Resolution 378 * 378) + AdamW optimizer**
+| LR    | Register  | Arch      | CUB   | CARS  | CIFAR10 | CIFAR100 |
+|-------|------------|-----------|-------|-------|---------|----------|
+| 2e-5  |    -    | DINOv2-B-378  | 90.52 | 94.66 | 99.09 | 92.68 |
+| 2e-5  | True    | DINOv2-B-378  | **90.84** | **95.11** |  **99.25**| **93.73** |
+
+**AURC with DINOv2 Models (Resolution 378 * 378) + AdamW optimizer**
+| LR    | Register  | Arch      | CUB   | CARS  | CIFAR10 | CIFAR100 |
+|-------|------------|-----------|-------|-------|---------|----------|
+| 2e-5  |    -    | DINOv2-B-378  | 20.65 | 9.96 | 0.37 | 8.83 |
+| 2e-5  | True    | DINOv2-B-378  | **18.88** | **9.23** |  **0.30**| **7.42** |
 
 **Pretraining matters**
 Reproducing the above exp with:
 ```bash 
 cd pretrained_weight/
-  bash download.sh
-  cd ..
-  bash pretraining.sh
+bash download.sh
+cd ..
+bash pretraining.sh 
+## for reproduction of dinov2 experiments
+bash dinov2_b.sh
 ```
 
 ## 7. FixRes Results :chart_with_upwards_trend:
@@ -204,12 +218,14 @@ Reproducing the above exp with:
   ```
 
 ## 8. References :scroll:
+
 * [Fixing the train-test resolution discrepancy](https://arxiv.org/abs/1906.06423)
 * [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
 * [MOCOV2: Momentum Contrast for Unsupervised Visual Representation Learning](https://arxiv.org/abs/2003.04297)
 * [DeiT III: Revenge of the ViT](https://arxiv.org/pdf/2204.07118)
 * [Training data-efficient image transformers &amp; distillation through attention](https://arxiv.org/abs/2012.12877)
 * [ConvNeXt: A ConvNet for the 2020s](https://arxiv.org/abs/2201.03545)
+* [Learning Robust Visual Features without Supervision](https://arxiv.org/abs/2304.07193)
 
 
 
