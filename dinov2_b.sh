@@ -1,27 +1,28 @@
-### CARS + DINOV2-B
+# ### CARS + DINOV2-B
 
 python train.py \
---save-dir CARS/dinov2_base_patch14_378_BS32_epoch150_Lr1e5 \
+--save-dir CARS/dinov2_base_patch14_reg_378_BS32_epoch50_Lr2e5 \
 --gpu 9 \
---model dinov2_base_patch14 \
---max-lr 1e-5 \
+--model dinov2_base_patch14_reg \
+--max-lr 2e-5 \
 --min-lr 1e-7 \
 --warmup-epoch 1 \
---nb-epoch 150 \
+--nb-epoch 50 \
 --train-size 378 \
 --batch-size 32 \
 --optimizer adamw \
 --test-size 378 CARS
 
+
 ### CUB + DINOV2-B
 python train.py \
---save-dir CUB/dinov2_base_patch14_378_BS32_epoch150_Lr1e5 \
+--save-dir CUB/dinov2_base_patch14_reg_378_BS32_epoch50_Lr2e5 \
 --gpu 9 \
---model dinov2_base_patch14 \
---max-lr 1e-5 \
+--model dinov2_base_patch14_reg \
+--max-lr 2e-5 \
 --min-lr 1e-7 \
 --warmup-epoch 1 \
---nb-epoch 150 \
+--nb-epoch 50 \
 --train-size 378 \
 --batch-size 32 \
 --optimizer adamw \
@@ -29,13 +30,13 @@ python train.py \
 
 ## CIFAR10 + DINOV2-B
 python train.py \
---save-dir CIFAR10/dinov2_base_patch14_378_BS32_epoch150_Lr1e5 \
+--save-dir CIFAR10/dinov2_base_patch14_reg_378_BS32_epoch50_Lr2e5 \
 --gpu 9 \
---model dinov2_base_patch14 \
---max-lr 1e-5 \
+--model dinov2_base_patch14_reg \
+--max-lr 2e-5 \
 --min-lr 1e-7 \
 --warmup-epoch 1 \
---nb-epoch 150 \
+--nb-epoch 50 \
 --train-size 378 \
 --batch-size 32 \
 --optimizer adamw \
@@ -43,13 +44,13 @@ python train.py \
 
 ## CIFAR100 + DINOV2-B
 python train.py \
---save-dir CIFAR100/dinov2_base_patch14_378_BS32_epoch150_Lr1e5 \
+--save-dir CIFAR100/dinov2_base_patch14_reg_378_BS32_epoch50_Lr2e5 \
 --gpu 9 \
---model dinov2_base_patch14 \
---max-lr 1e-5 \
+--model dinov2_base_patch14_reg \
+--max-lr 2e-5 \
 --min-lr 1e-7 \
 --warmup-epoch 1 \
---nb-epoch 150 \
+--nb-epoch 50 \
 --train-size 378 \
 --batch-size 32 \
 --optimizer adamw \
