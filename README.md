@@ -84,6 +84,8 @@ bash baseline.sh
 | 0.005 | Inet1K     | ResNet50  | **84.47** | 91.38 |
 | 0.005 | MocoV2     | ResNet50  | 79.01 | **92.33** |
 
+### DEIT-B and ConvNext-B
+
 **Accuracy with DEIT-B and ConvNext-B Models (Resolution 384 * 384)**
 
 | LR    | Pretrained | EMA | Arch      | CUB   | CARS  | CIFAR10 | CIFAR100 |
@@ -110,6 +112,8 @@ bash baseline.sh
 | 0.002  | Inet21K + 1K     | True   | ConvNext-B  | **18.79** | 12.75 | **0.39** | **9.14** |
 | 0.002  | Inet21K     | -   | ConvNext-B  | 19.78 | 12.61 | 0.59 | 11.08 |
 | 0.002  | Inet21K     | True   | ConvNext-B  | 19.41 | **12.30** | 0.48 | 9.78 |
+
+### DINOv2-B
 
 **Accuracy with DINOv2 Models (Resolution 378 * 378) + AdamW optimizer**
 | LR    | Register  | Arch      | CUB   | CARS  | CIFAR10 | CIFAR100 |
